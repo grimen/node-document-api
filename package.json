@@ -1,0 +1,62 @@
+{
+  "name": "node-document-api",
+  "description": "Many document stores, Y U NO interface?",
+  "keywords": ["document", "odm", "object document mapper", "generic", "unified", "storage", "storages", "validator", "validators", "differ", "differs", "schema", "api"],
+  "version": "0.1.0-pre1",
+  "homepage": "https://github.com/grimen/node-document-api",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/grimen/node-document-api.git"
+  },
+  "bugs": {
+    "web": "https://github.com/grimen/node-document-api/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/grimen/node-document-api/blob/MIT-LICENSE"
+    }
+  ],
+  "author": "Jonas Grimfelt <grimen@gmail.com>",
+  "maintainers": [
+    {
+      "name": "Jonas Grimfelt",
+      "email": "grimen@gmail.com",
+      "web": "https://github.com/grimen"
+    }
+  ],
+  "contributors": [],
+  "directories": {
+    "lib": "./lib"
+  },
+  "main": "./index.js",
+  "scripts": {
+    "start": "make start",
+    "test": "make test",
+    "test-ci": "make test-ci",
+    "test-remote": "make test-remote"
+  },
+  "bin": {},
+  "engines": {
+    "node": ">= 0.8.0"
+  },
+  "dependencies": {
+    "funargs": "latest",
+    "sugar": "latest",
+    "node-document": "latest",
+    "connect": "latest"
+  },
+  "devDependencies": {
+    "mocha": "latest",
+    "chai": "latest",
+    "chai-http": "latest",
+    "cover": "latest",
+    "node-inspector": "latest",
+    "longjohn": "latest",
+    "colors": "latest",
+    "express": "latest",
+    "async": "latest",
+    "superagent": "latest",
+    "supertest": "latest"
+  }
+}

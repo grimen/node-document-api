@@ -1,0 +1,7 @@
+--ui exports
+--reporter spec
+--reporter spec
+--slow 500
+--timeout 15000
+--bail
+--globals memory
