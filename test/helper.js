@@ -1,5 +1,7 @@
 process.env.NODE_ENV = 'test';
 
+process.setMaxListeners(process.env.MAX_LISTENERS || 0);
+
 require('sugar');
 require('colors');
 
