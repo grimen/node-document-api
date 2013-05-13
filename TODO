@@ -1,0 +1,34 @@
+
+::::: CURRENT/NEXT ::
+
+
+::::: HIGH ::
+
+- [FEATURE]: List records by type - requires `node-document`/`node-document-storage` support for this.
+      - Example:
+          GET /posts
+
+- [FEATURE]: List requires `node-document`/`node-document-storage` support for this.
+      - Example:
+          GET /_types
+
+- [FEATURE]: Ability to mount GUI on top of the API (which itself talks to the API via AJAX) - requires `node-document-gui` implementation and integration.
+      - Example:
+          GET /post/new
+          GET /post/1/edit
+          GET /post/1,2,3/edit
+
+- [FEATURE]: Mount only specified/allowed models/types:
+      - Example:
+          app.use(API([Post, Article], {route: '/api'}))
+
+- [FEATURE]: Write middleware env variable so that other middlewares can use these parsed parameters to modify the response to custom format.
+      - Example:
+          app
+            .use(function(req, res, next) {
+              if (res.api) {
+                res.setHeader('X-Document-Args', [res.api.args.type, res.api.args.id].join('/')); // dumb example
+              }
+            })
+            .use(API())
+
