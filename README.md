@@ -225,7 +225,7 @@ Unified HTTP API for write/read data to/from differen kinds of storages/database
 
 ## Example
 
-*Connect:*
+Using [Connect.js](https://github.com/senchalabs/connect):
 
 ```javascript
   var connect = require('connect')
@@ -251,7 +251,7 @@ Unified HTTP API for write/read data to/from differen kinds of storages/database
   });
 ```
 
-*Express:*
+Using [Express.js](https://github.com/senchalabs/connect):
 
 ```javascript
   var express = require('express')
