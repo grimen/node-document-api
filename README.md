@@ -2,6 +2,8 @@
 
 **HTTP API** endpoint/middleware for [node-document](https://github.com/grimen/node-document) ODM for Node.js.
 
+Work in progress; see **[TODO](https://github.com/grimen/node-document-api/blob/master/TODO)**.
+
 
 ## About
 
