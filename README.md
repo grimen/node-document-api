@@ -232,7 +232,7 @@ Unified HTTP API for write/read data to/from differen kinds of storages/database
   var http = require('http');
 
   var Document = require('node-document');
-  var API = require('../');
+  var API = require('node-document-api');
 
   var Post = Document('Post');
 
@@ -257,7 +257,7 @@ Unified HTTP API for write/read data to/from differen kinds of storages/database
   var express = require('express')
 
   var Document = require('node-document');
-  var API = require('../');
+  var API = require('node-document-api');
 
   var Post = Document('Post');
 
