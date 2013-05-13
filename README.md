@@ -251,7 +251,7 @@ Using [Connect.js](https://github.com/senchalabs/connect):
   });
 ```
 
-Using [Express.js](https://github.com/senchalabs/connect):
+Using [Express.js](https://github.com/visionmedia/express):
 
 ```javascript
   var express = require('express')
