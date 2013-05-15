@@ -22,8 +22,20 @@ var API = helper.API;
 
 module.exports = {
   'POST /': {
-    'POST /': function(done) {
+    'POST / - with body': function(done) {
       async.series([
+        function(done) {
+          var api = API();
+          req(api)
+            .post('/')
+            .res(function(res) {
+              expect(res).to.have.status(200);
+              expect(res).to.have.header('x-powered-by', 'connect');
+              expect(res).to.have.header('content-type', 'application/json');
+              expect(res.body).to.deep.equal({hello: "world"});
+              done();
+            });
+        },
         function(done) {
           var api = API();
           req(api)
@@ -51,9 +63,6 @@ module.exports = {
           var api = API();
           req(api)
             .post('/post')
-            .req(function(req) {
-              req.send([{title: '/post', description: 'Lorem ipsum.'}]);
-            })
             .res(function(res) {
               expect(res).to.have.status(405);
               expect(res).to.have.header('x-powered-by', 'connect, node-document');
@@ -72,9 +81,6 @@ module.exports = {
           var api = API();
           req(api)
             .post('/article')
-            .req(function(req) {
-              req.send([{title: '/article', description: 'Lorem ipsum.'}]);
-            })
             .res(function(res) {
               expect(res).to.have.status(405);
               expect(res).to.have.header('x-powered-by', 'connect, node-document');

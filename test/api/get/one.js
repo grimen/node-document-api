@@ -8,8 +8,8 @@ var helper = require('../../helper'),
 var document = require('../../../lib/');
 var Document = require('node-document');
 
-var Post;
-var Article;
+var Post = Document('Post');
+var Article = Document('Article');
 
 var post;
 var article;

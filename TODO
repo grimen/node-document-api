@@ -1,26 +1,20 @@
 
+::::: MISSING TESTS ::
+
+* [FEATURE]: Mount only specified/allowed models/types:
+      - Example:
+          app.use(API(Post, Article)
+          app.use(API(Post, Article, {route: '/api'}))
+          app.use(API(Post, Article, {route: '/api', methods: ['get']}))
+          app.use(API(Post, Article, {methods: ['get']}))
+          app.use(API({route: '/api'}))
+          app.use(API({route: '/api', methods: ['get']}))
+          app.use(API({methods: ['get']}))
+
+      * Tests for both mounting classes and routes.
+
+
 ::::: CURRENT/NEXT ::
-
-
-::::: HIGH ::
-
-- [FEATURE]: List records by type - requires `node-document`/`node-document-storage` support for this.
-      - Example:
-          GET /posts
-
-- [FEATURE]: List requires `node-document`/`node-document-storage` support for this.
-      - Example:
-          GET /_types
-
-- [FEATURE]: Ability to mount GUI on top of the API (which itself talks to the API via AJAX) - requires `node-document-gui` implementation and integration.
-      - Example:
-          GET /post/new
-          GET /post/1/edit
-          GET /post/1,2,3/edit
-
-- [FEATURE]: Mount only specified/allowed models/types:
-      - Example:
-          app.use(API([Post, Article], {route: '/api'}))
 
 - [FEATURE]: Write middleware env variable so that other middlewares can use these parsed parameters to modify the response to custom format.
       - Example:
@@ -32,3 +26,27 @@
             })
             .use(API())
 
+
+::::: HIGH ::
+
+- [FEATURE]: List records by type - requires `node-document`/`node-document-storage` support for this.
+      - Example:
+          GET /posts
+
+- [FEATURE]: List - requires `node-document`/`node-document-storage` support for this.
+      - Example:
+          GET /_types
+
+- [FEATURE]: Ability to mount GUI on top of the API (which itself talks to the API via AJAX) - requires `node-document-gui` implementation and integration.
+      - Example:
+          GET /post/new
+          GET /post/1/edit
+          GET /post/1,2,3/edit
+
+
+::::: LOW ::
+
+- [FEATURE]: Mount an instance?
+      - Example:
+          API(Document('Site').get(1), {route: /site})
+          GET /site
