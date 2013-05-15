@@ -134,6 +134,47 @@ module.exports = {
       }
     },
 
+    'POST /<existing_type>': {
+      'POST /post': function(done) {
+        async.series([
+          function(next) {
+            var api = API();
+            req(api)
+              .post('/post')
+              .req(function(req) {
+                req.send([{title: '/post', description: 'Lorem ipsum.'}]);
+              })
+              .res(function(res) {
+                expect(res).to.have.status(200);
+                expect(res).to.have.header('x-powered-by', 'connect, node-document');
+                expect(res).to.have.header('x-node-document', 'set');
+                expect(res).to.have.header('content-type', 'application/json');
+                expect([Object.reject(res.body[0], '_id')]).to.deep.equal([{_type: 'post', title: '/post', description: 'Lorem ipsum.'}]);
+                expect(res.body[0]._id).to.match(/[\w\d\-]{36}/);
+                next();
+              });
+          },
+          function(next) {
+            var api = API();
+            req(api)
+              .post('/post?foo=bar')
+              .req(function(req) {
+                req.send([{title: '/post?foo=bar', description: 'Lorem ipsum.'}]);
+              })
+              .res(function(res) {
+                expect(res).to.have.status(200);
+                expect(res).to.have.header('x-powered-by', 'connect, node-document');
+                expect(res).to.have.header('x-node-document', 'set');
+                expect(res).to.have.header('content-type', 'application/json');
+                expect([Object.reject(res.body[0], '_id')]).to.deep.equal([{_type: 'post', title: '/post?foo=bar', description: 'Lorem ipsum.'}]);
+                expect(res.body[0]._id).to.match(/[\w\d\-]{36}/);
+                next();
+              });
+          }
+        ], done);
+      },
+    },
+
     'POST /<existing_type>/<existing_id>': {
       'POST /post/1': function(done) {
         async.series([

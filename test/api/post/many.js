@@ -135,6 +135,51 @@ module.exports = {
       }
     },
 
+    'POST /<existing_type>': {
+      'POST /post': function(done) {
+        async.series([
+          function(next) {
+            var api = API();
+            req(api)
+              .post('/post')
+              .req(function(req) {
+                req.send([{title: '/post:1', description: 'Lorem ipsum.'}, {title: '/post:2', description: 'Lorem ipsum.'}]);
+              })
+              .res(function(res) {
+                expect(res).to.have.status(200);
+                expect(res).to.have.header('x-powered-by', 'connect, node-document');
+                expect(res).to.have.header('x-node-document', 'set');
+                expect(res).to.have.header('content-type', 'application/json');
+                expect([Object.reject(res.body[0], '_id')]).to.deep.equal([{_type: 'post', title: '/post:1', description: 'Lorem ipsum.'}]);
+                expect([Object.reject(res.body[1], '_id')]).to.deep.equal([{_type: 'post', title: '/post:2', description: 'Lorem ipsum.'}]);
+                expect(res.body[0]._id).to.match(/[\w\d\-]{36}/);
+                expect(res.body[1]._id).to.match(/[\w\d\-]{36}/);
+                next();
+              });
+          },
+          function(next) {
+            var api = API();
+            req(api)
+              .post('/post?foo=bar')
+              .req(function(req) {
+                req.send([{title: '/post?foo=bar:1', description: 'Lorem ipsum.'}, {title: '/post?foo=bar:2', description: 'Lorem ipsum.'}]);
+              })
+              .res(function(res) {
+                expect(res).to.have.status(200);
+                expect(res).to.have.header('x-powered-by', 'connect, node-document');
+                expect(res).to.have.header('x-node-document', 'set');
+                expect(res).to.have.header('content-type', 'application/json');
+                expect([Object.reject(res.body[0], '_id')]).to.deep.equal([{_type: 'post', title: '/post?foo=bar:1', description: 'Lorem ipsum.'}]);
+                expect([Object.reject(res.body[1], '_id')]).to.deep.equal([{_type: 'post', title: '/post?foo=bar:2', description: 'Lorem ipsum.'}]);
+                expect(res.body[0]._id).to.match(/[\w\d\-]{36}/);
+                expect(res.body[1]._id).to.match(/[\w\d\-]{36}/);
+                next();
+              });
+          }
+        ], done);
+      },
+    },
+
     'POST /<existing_type>/<missing_id>,<missing_id>': {
       'POST /post/3,4': function(done) {
         async.series([

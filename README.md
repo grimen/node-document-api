@@ -14,6 +14,30 @@ Unified HTTP API for write/read data to/from differen kinds of storages/database
 
 ### `POST`
 
+* `(:route)/:type`
+
+    ```text
+    HTTP POST /post
+      {
+        "title": "Post",
+        "description": "Lorem ipsum..."
+      }
+    ```
+
+    ```javascript
+    /*
+      200 OK
+    */
+    [
+      {
+        "_type": "post",
+        "_id": "eaf56300-7785-4c9a-a103-6895f873bff7",
+        "title": "Post",
+        "description": "Lorem ipsum..."
+      }
+    ]
+    ```
+
 * `(:route)/:type/:id`
 
     ```text
