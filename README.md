@@ -87,9 +87,24 @@ Unified HTTP API for write/read data to/from differen kinds of storages/database
       200 OK
     */
     [
-      true,
-      true,
-      true
+      {
+        "_type": "post",
+        "_id": 1,
+        "title": "Post 1",
+        "description": "Lorem ipsum..."
+      },
+      {
+        "_type": "post",
+        "_id": 2,
+        "title": "Post 2",
+        "description": "Lorem ipsum..."
+      },
+      {
+        "_type": "post",
+        "_id": 2,
+        "title": "Post 2",
+        "description": "Lorem ipsum..."
+      }
     ]
     ```
 
@@ -149,9 +164,24 @@ Unified HTTP API for write/read data to/from differen kinds of storages/database
       200 OK
     */
     [
-      true,
-      true,
-      true
+      {
+        "_type": "post",
+        "_id": 1,
+        "title": "Post 1",
+        "description": "Lorem ipsum..."
+      },
+      {
+        "_type": "post",
+        "_id": 2,
+        "title": "Post 2",
+        "description": "Lorem ipsum..."
+      },
+      {
+        "_type": "post",
+        "_id": 2,
+        "title": "Post 2",
+        "description": "Lorem ipsum..."
+      }
     ]
     ```
 
